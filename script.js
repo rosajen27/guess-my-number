@@ -6,9 +6,6 @@ const secretNumber = Math.trunc(Math.random() * 20) + 1;
 // starting score is 20
 let score = 20;
 
-// display that random secretNumber in the secretNumber div
-document.querySelector(".number").textContent = secretNumber;
-
 // save value in the guess box when the check button is clicked
 document.querySelector(".check").addEventListener("click", function () {
 
@@ -24,6 +21,8 @@ document.querySelector(".check").addEventListener("click", function () {
 
     } else if (guess === secretNumber) {
         document.querySelector(".message").textContent = "🎉 Correct Number!";
+        // display that random secretNumber in the secretNumber div
+        document.querySelector(".number").textContent = secretNumber;
 
         // change background color to green when user wins
         document.querySelector("body").style.backgroundColor = "#60b347";
