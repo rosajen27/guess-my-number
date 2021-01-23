@@ -16,7 +16,7 @@ document.querySelector(".check").addEventListener("click", function () {
     const guess = Number(document.querySelector(".guess").value);
     console.log(guess, typeof guess);
 
-    // if guess field is empty, no number message appears
+    // if guess field is empty, display no number message
     // if guess equals secretNumber, display correct number message
     // if guess is too low or too high, display corresponding message
     if (!guess) {
@@ -26,15 +26,29 @@ document.querySelector(".check").addEventListener("click", function () {
         document.querySelector(".message").textContent = "🎉 Correct Number!";
 
     } else if (guess > secretNumber) {
-        document.querySelector(".message").textContent = "📈 Too high!"
-        // reduce score by one point and display new score
-        score--;
-        document.querySelector(".score").textContent = score;
+
+        if (score > 1) {
+            document.querySelector(".message").textContent = "📈 Too high!"
+            // reduce score by one point and display new score
+            score--;
+            document.querySelector(".score").textContent = score;
+        } else {
+            // once score is below 0, display you lost the game message
+            document.querySelector(".message").textContent = "💥 You lost the game!";
+            document.querySelector(".score").textContent = 0;
+        }
 
     } else if (guess < secretNumber) {
-        document.querySelector(".message").textContent = "📉 Too low!"
-        // reduce score by one point and display new score
-        score--;
-        document.querySelector(".score").textContent = score;
+
+        if (score > 1) {
+            document.querySelector(".message").textContent = "📉 Too low!"
+            // reduce score by one point and display new score
+            score--;
+            document.querySelector(".score").textContent = score;
+        } else {
+            // once score is below 0, display you lost the game message
+            document.querySelector(".message").textContent = "💥 You lost the game!";
+            document.querySelector(".score").textContent = 0;
+        }
     }
 });
