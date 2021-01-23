@@ -1,7 +1,7 @@
 'use strict';
 
 // generate a random secretNumber between 1 - 20
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 // starting score is 20
 let score = 20;
@@ -54,4 +54,22 @@ document.querySelector(".check").addEventListener("click", function () {
             document.querySelector(".score").textContent = 0;
         }
     }
+});
+
+
+// restarting the game
+document.querySelector(".again").addEventListener("click", function () {
+    // restore the initial values of the score and secret number
+    score = 20;
+    secretNumber = Math.trunc(Math.random() * 20) + 1;
+
+    // restore the initial conditions of the message, number, score and guess input fields
+    document.querySelector(".message").textContent = "Start guessing...";
+    document.querySelector(".number").textContent = "?";
+    document.querySelector(".score").textContent = score;
+    document.querySelector(".guess").value = "";
+
+    // restore original background color and number width
+    document.querySelector("body").style.backgroundColor = "#222";
+    document.querySelector(".number").style.width = "15rem";
 });
